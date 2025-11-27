@@ -389,19 +389,224 @@
                 overflow: visible !important;
             }
 
+            border-color: rgba(197, 160, 89, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--gold-solid);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .feature-desc {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        /* --- BUDGET & BUTTONS --- */
+        .budget-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            border: 1px solid var(--gold-solid);
+            text-align: center;
+        }
+
+        .price-tag {
+            font-size: 3rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: var(--gold-solid);
+            margin: 1.5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 0px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid var(--gold-solid);
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .btn-primary {
+            background-color: var(--gold-solid);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background-color: #e0b665;
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--gold-solid);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(197, 160, 89, 0.1);
+        }
+
+        /* --- UTILS --- */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .text-dim {
+            color: var(--text-dim);
+        }
+
+        ul.check-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            display: inline-block;
+        }
+
+        ul.check-list li {
+            margin-bottom: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        ul.check-list li i {
+            color: var(--gold-solid);
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- PRINT --- */
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+                /* Full bleed for cover */
+            }
+
+            body {
+                background-color: #121212 !important;
+                color: #f5f5f7 !important;
+                font-size: 11pt;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                margin: 0;
+            }
+
+            .hero,
+            .btn,
+            footer,
+            .no-print,
+            video,
+            .video-bg {
+                display: none !important;
+            }
+
+            .container {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            /* COVER PAGE */
+            .print-cover {
+                display: flex !important;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                width: 100%;
+                background: #121212 !important;
+                /* Dark cover */
+                color: #c5a059 !important;
+                text-align: center;
+                page-break-after: always;
+                position: relative;
+            }
+
+            .print-cover h1 {
+                font-size: 4rem;
+                color: #c5a059 !important;
+                margin-bottom: 1rem;
+            }
+
+            .print-cover p {
+                font-size: 1.5rem;
+                color: white !important;
+            }
+
+            .print-cover .logo-print {
+                font-size: 2rem;
+                font-weight: bold;
+                margin-bottom: 4rem;
+                letter-spacing: 4px;
+                border-bottom: 2px solid #c5a059;
+                padding-bottom: 1rem;
+            }
+
+            /* CONTENT PAGES */
+            .card {
+                background: #1e1e1e !important;
+                color: #f5f5f7 !important;
+                box-shadow: none !important;
+                border: 1px solid rgba(255, 255, 255, 0.05) !important;
+                padding: 2rem !important;
+                margin-bottom: 2rem !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
+                display: block;
+                overflow: visible !important;
+            }
+
             .card:last-child {
                 page-break-after: avoid;
             }
 
             .card::before {
-                display: none !important;
+                content: '';
+                display: block !important;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 4px;
+                height: 100%;
+                background: #c5a059 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
 
             h1,
             h2,
             h3,
             h4 {
-                color: #000 !important;
+                color: #f5f5f7 !important;
                 page-break-after: avoid;
                 break-after: avoid;
             }
@@ -415,7 +620,7 @@
 
             .text-dim,
             .feature-desc {
-                color: #444 !important;
+                color: #a1a1aa !important;
             }
 
             .grid-2,
@@ -434,16 +639,17 @@
                 max-width: 100% !important;
                 height: auto !important;
                 box-shadow: none !important;
-                border: 1px solid #eee;
+                border: 1px solid #333;
                 max-height: 45vh;
                 object-fit: contain;
                 page-break-inside: avoid;
                 break-inside: avoid;
+                background: #000;
             }
 
             .budget-card {
-                background: #fff !important;
-                border: 5px double #c5a059 !important;
+                background: #1e1e1e !important;
+                border: 1px solid #c5a059 !important;
                 padding: 2rem !important;
             }
 
@@ -457,9 +663,9 @@
                 margin-top: 2rem;
                 padding: 1.5rem;
                 border: 1px dashed #c5a059;
-                color: #000;
+                color: #f5f5f7;
                 text-align: center;
-                background: #fffbf0;
+                background: rgba(197, 160, 89, 0.1) !important;
             }
 
             .print-only-link a {
