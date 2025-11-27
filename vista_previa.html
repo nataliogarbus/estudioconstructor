@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio Constructor - Luxury Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           ESTÉTICA PREMIUM - DARK GLASS LUXURY
+           ========================================= */
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            --text-main: #f0f0f0;
+            --text-muted: #a0a0a0;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Manrope', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            overflow-x: hidden;
+            /* Fondo sutil con ruido para textura premium */
+            background-image: radial-gradient(circle at 50% 0%, #1a1a1a, #0a0a0a);
+        }
+
+        /* --- TIPOGRAFÍA DE LUJO --- */
+        h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; }
+        
+        .gold-text {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+
+        @keyframes shine { to { background-position: 200% center; } }
+
+        /* --- HEADER --- */
+        .main-header {
+            position: fixed; width: 100%; padding: 2rem 4rem;
+            display: flex; justify-content: space-between; align-items: center; z-index: 1000;
+            transition: 0.5s;
+        }
+        .main-header.scrolled {
+            padding: 1rem 4rem;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .logo { font-family: var(--font-sans); font-weight: 300; letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; }
+        
+        nav ul { display: flex; gap: 3rem; list-style: none; }
+        nav a { color: var(--text-main); text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; opacity: 0.7; }
+        nav a:hover { opacity: 1; color: #d4af37; }
+        
+        .btn-contact {
+            padding: 0.8rem 2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px; /* Pill shape es más moderno */
+            transition: 0.4s;
+        }
+        .btn-contact:hover { background: var(--text-main); color: var(--bg-dark); border-color: var(--text-main); }
+
+        /* --- SPLIT HERO (MEJORADO) --- */
+        .split-container { display: flex; height: 100vh; width: 100%; overflow: hidden; }
+        
+        .split-item {
+            flex: 1; position: relative; transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            display: flex; align-items: center; justify-content: center;
+            border-right: 1px solid rgba(255,255,255,0.05);
+            cursor: pointer;
+        }
+        .split-item:last-child { border-right: none; }
+        
+        /* Imágenes de fondo (UNSPLASH) */
+        .bg-img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            transition: transform 1.2s ease;
+            filter: grayscale(100%) brightness(0.6);
+        }
+        
+        /* Imágenes específicas para Casas, Piletas, Cocinas */
+        .item-1 .bg-img { background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop'); }
+        .item-2 .bg-img { background-image: url('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=2070&auto=format&fit=crop'); }
+        .item-3 .bg-img { background-image: url('https://images.unsplash.com/photo-1600566753086-00f18cf6b343?q=80&w=2070&auto=format&fit=crop'); }
+
+        .split-content {
+            position: relative; z-index: 2; text-align: center;
+            transform: translateY(20px); transition: 0.5s; opacity: 0.8;
+        }
+        
+        .split-item:hover { flex: 2.5; }
+        .split-item:hover .bg-img { transform: scale(1.1); filter: grayscale(0%) brightness(0.9); }
+        .split-item:hover .split-content { transform: translateY(0); opacity: 1; }
+
+        .big-num { font-family: var(--font-serif); font-size: 5rem; line-height: 1; opacity: 0.2; display: block; margin-bottom: -20px; }
+        .hero-title { font-size: 2.5rem; margin-bottom: 10px; font-weight: 400; }
+        .hero-subtitle { font-family: var(--font-sans); letter-spacing: 3px; font-size: 0.8rem; text-transform: uppercase; color: #d4af37; }
+
+        /* --- SECCIONES CARDS --- */
+        .section-padding { padding: 8rem 2rem; max-width: 1400px; margin: 0 auto; }
+        
+        .section-header { text-align: center; margin-bottom: 6rem; }
+        .section-header h2 { font-size: 3.5rem; margin-bottom: 1rem; }
+        .section-header p { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+
+        /* Tarjetas Estilo Vidrio (Glassmorphism) */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 3rem;
+            border-radius: 4px; /* Bordes menos redondeados = más arquitectónico */
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%); transition: 0.6s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.3); /* Dorado sutil */
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .glass-card:hover::before { transform: translateX(100%); }
+
+        .icon-box { font-size: 2.5rem; margin-bottom: 1.5rem; color: #d4af37; }
+        .card-title { font-size: 1.5rem; margin-bottom: 1rem; letter-spacing: 0.5px; }
+        .card-text { color: var(--text-muted); line-height: 1.7; font-size: 0.95rem; }
+
+        /* --- INNOVACIÓN (Layout Asimétrico) --- */
+        .innovation-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 2rem;
+        }
+        .highlight-card {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1558442996-528422f9d3f4?q=80&w=1973&auto=format&fit=crop');
+            background-size: cover;
+            grid-row: span 2;
+            display: flex; flex-direction: column; justify-content: flex-end;
+        }
+
+        /* --- LISTAS --- */
+        .feature-list li {
+            list-style: none; padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex; align-items: center;
+        }
+        .feature-list li::before {
+            content: '•'; color: #d4af37; margin-right: 10px; font-size: 1.5rem;
+        }
+
+        /* --- FOOTER --- */
+        footer { border-top: 1px solid var(--glass-border); padding: 4rem 2rem; text-align: center; margin-top: 4rem; color: var(--text-muted); font-size: 0.8rem; letter-spacing: 1px; }
+
+        @media (max-width: 768px) {
+            .split-container { flex-direction: column; }
+            .innovation-grid { grid-template-columns: 1fr; }
+            .section-header h2 { font-size: 2.5rem; }
+            .main-header { padding: 1.5rem; }
+            nav { display: none; } /* En esta demo simplificada oculto menú en móvil */
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">Estudio Constructor</div>
+        <nav>
+            <ul>
+                <li><a href="#">Casas</a></li>
+                <li><a href="#">Piletas</a></li>
+                <li><a href="#">Cocinas</a></li>
+                <li><a href="#">El Estudio</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="btn-contact">INICIAR PROYECTO</a>
+    </header>
+
+    <div class="split-container">
+        <div class="split-item item-1">
+            <div class="bg-img"></div>
+            <div class="split-content">
+                <span class="big-num">01</span>
+                <h2 class="hero-title">Residencias</h2>
+                <span class="hero-subtitle">Arquitectura Integral</span>
+            </div>
+        </div>
+        <div class="split-item item-2">
+            <div class="bg-img"></div>
+            <div class="split-content">
+                <span class="big-num">02</span>
+                <h2 class="hero-title">Piscinas</h2>
+                <span class="hero-subtitle">Hormigón Proyectado</span>
+            </div>
+        </div>
+        <div class="split-item item-3">
+            <div class="bg-img"></div>
+            <div class="split-content">
+                <span class="big-num">03</span>
+                <h2 class="hero-title">Espacios</h2>
+                <span class="hero-subtitle">Cocinas & Quinchos</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="section-padding">
+        <div class="section-header">
+            <h2 class="gold-text">Diseñamos tu visión</h2>
+            [cite_start]<p>En Estudio Constructor unimos la creatividad del diseño arquitectónico con el pragmatismo de la ejecución de obra[cite: 1, 2].</p>
+        </div>
+
+        <div class="grid-3">
+            <div class="glass-card">
+                <div class="icon-box">✦</div>
+                <h3 class="card-title">Transparencia</h3>
+                <p class="card-text">Cómputos precisos, sin costos ocultos. [cite_start]"Transparencia Financiera" es nuestro pilar fundamental[cite: 2].</p>
+            </div>
+            <div class="glass-card">
+                <div class="icon-box">✦</div>
+                <h3 class="card-title">Llave en Mano</h3>
+                <p class="card-text">Centralizamos gremios y dirección. [cite_start]Nosotros gestionamos, vos disfrutás la evolución de la obra[cite: 2].</p>
+            </div>
+            <div class="glass-card">
+                <div class="icon-box">✦</div>
+                <h3 class="card-title">El Terreno Manda</h3>
+                <p class="card-text">Analizamos la implantación y el sol. [cite_start]No creemos en casas estandarizadas, sino en diseños eficientes[cite: 2].</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background: linear-gradient(to bottom, #0a0a0a, #111);">
+        <div class="section-header">
+            <h2>El Nuevo Estándar</h2>
+        </div>
+
+        <div class="innovation-grid">
+            <div class="glass-card highlight-card">
+                <h3 class="card-title gold-text">Smart Living & Eco-Luxury</h3>
+                <p class="card-text" style="color: #eee">Integramos domótica y sustentabilidad desde los cimientos.</p>
+            </div>
+
+            <div class="glass-card">
+                <div class="icon-box">🌱</div>
+                <h3 class="card-title">Sustentabilidad</h3>
+                <ul class="feature-list card-text">
+                    [cite_start]<li>Biodigestores ecológicos [cite: 3]</li>
+                    [cite_start]<li>Paisajismo nativo [cite: 3]</li>
+                    [cite_start]<li>Invernaderos de diseño [cite: 3]</li>
+                </ul>
+            </div>
+
+            <div class="glass-card">
+                <div class="icon-box">🛡️</div>
+                <h3 class="card-title">Security Design</h3>
+                <ul class="feature-list card-text">
+                    [cite_start]<li>Safe Rooms (Vestidores blindados) [cite: 3]</li>
+                    [cite_start]<li>Cristales antivandálicos [cite: 3]</li>
+                    [cite_start]<li>Zonificación de resguardo [cite: 3]</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 ESTUDIO CONSTRUCTOR - ARQUITECTURA EN ZONA OESTE & NORTE</p>
+    </footer>
+
+</body>
+</html>

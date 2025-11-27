@@ -1,0 +1,231 @@
+/* ========================================
+   DARK MODE PREMIUM SECTIONS - PROFESSIONAL
+   ======================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Premium Sections Base */
+.premium-section {
+    padding: 8rem 2rem;
+    text-align: center;
+}
+
+.dark-mode {
+    background-color: #0f172a;
+    color: #f8fafc;
+}
+
+.dark-mode-alt {
+    background-color: #1e293b;
+    color: #f8fafc;
+}
+
+.premium-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.premium-title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    color: #fbbf24;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.premium-lead {
+    font-size: 1.4rem;
+    margin-bottom: 5rem;
+    color: #cbd5e1;
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.premium-subtitle {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin: 5rem 0 3rem 0;
+    color: #fbbf24;
+    letter-spacing: 1px;
+}
+
+/* Premium Content Grid */
+.premium-content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 4rem;
+    margin-bottom: 5rem;
+    text-align: left;
+}
+
+.premium-block h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #fbbf24;
+    letter-spacing: 0.5px;
+}
+
+.premium-block p {
+    line-height: 2;
+    color: #cbd5e1;
+    font-size: 1.15rem;
+}
+
+/* Values Grid */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.value-card {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    padding: 3rem 2.5rem;
+    border-radius: 16px;
+    border: 1px solid #334155;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.value-card:hover {
+    transform: translateY(-12px);
+    border-color: #fbbf24;
+    box-shadow: 0 15px 50px rgba(251, 191, 36, 0.25);
+}
+
+.value-icon {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+}
+
+.value-card h4 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    color: #fbbf24;
+    letter-spacing: 0.5px;
+}
+
+.value-card p {
+    line-height: 1.8;
+    color: #cbd5e1;
+    font-size: 1.05rem;
+}
+
+/* Innovation Grid */
+.innovation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3.5rem;
+    margin-top: 4rem;
+}
+
+.innovation-card {
+    background: linear-gradient(145deg, #334155, #1e293b);
+    padding: 3.5rem 2.5rem;
+    border-radius: 20px;
+    border-bottom: 5px solid #fbbf24;
+    text-align: left;
+    transition: all 0.4s ease;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.innovation-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 60px rgba(251, 191, 36, 0.35);
+    border-bottom-width: 8px;
+}
+
+.innovation-icon {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+}
+
+.innovation-card h3 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+    color: #fbbf24;
+    letter-spacing: 0.5px;
+}
+
+.innovation-subtitle {
+    font-style: italic;
+    color: #94a3b8;
+    margin-bottom: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+
+.innovation-list {
+    list-style: none;
+    padding: 0;
+}
+
+.innovation-list li {
+    padding: 1rem 0;
+    padding-left: 2rem;
+    position: relative;
+    color: #e2e8f0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.innovation-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #fbbf24;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .premium-section {
+        padding: 5rem 1.5rem;
+    }
+
+    .premium-title {
+        font-size: 2.5rem;
+    }
+
+    .premium-lead {
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+    }
+
+    .premium-subtitle {
+        font-size: 2rem;
+        margin: 3rem 0 2rem 0;
+    }
+
+    .premium-content-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .innovation-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .value-card,
+    .innovation-card {
+        padding: 2.5rem 2rem;
+    }
+}

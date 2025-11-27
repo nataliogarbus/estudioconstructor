@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Loreti | Estudio Constructor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- ESTILOS CORPORATIVOS PREMIUM --- */
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --gold-solid: #c5a059;
+            --text-light: #f5f5f7;
+            --text-dim: #a1a1aa;
+            --shadow-card: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-light);
+            background-color: var(--bg-dark);
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-light);
+            margin-top: 0;
+            letter-spacing: 1px;
+        }
+
+        .gold-text { color: var(--gold-solid); }
+
+        /* --- HERO --- */
+        .hero {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.4); 
+        }
+
+        .hero-content {
+            z-index: 1;
+            padding: 2rem;
+            max-width: 900px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero-subtitle {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            color: var(--gold-solid);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        @media(min-width: 768px) { .hero h1 { font-size: 4.5rem; } }
+
+        /* --- LAYOUT --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            box-shadow: var(--shadow-card);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--gold-solid);
+        }
+
+        .section-tag {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--gold-solid);
+            margin-bottom: 1rem;
+            display: block;
+            font-weight: 600;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media(min-width: 900px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+
+        /* --- DETAILS LIST (NUEVO) --- */
+        .detail-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 2rem;
+        }
+        .detail-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 1.5rem;
+        }
+        .detail-item:last-child { border-bottom: none; }
+        .detail-title {
+            color: var(--gold-solid);
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* --- FEATURES --- */
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        .feature-item:hover {
+            background: rgba(197, 160, 89, 0.05);
+            border-color: rgba(197, 160, 89, 0.3);
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--gold-solid);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .feature-title { font-weight: 600; margin-bottom: 0.5rem; color: var(--text-light); }
+        .feature-desc { font-size: 0.9rem; color: var(--text-dim); }
+
+        /* --- BUDGET & BUTTONS --- */
+        .budget-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            border: 1px solid var(--gold-solid);
+            text-align: center;
+        }
+        .price-tag {
+            font-size: 3rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: var(--gold-solid);
+            margin: 1.5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 0px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid var(--gold-solid);
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .btn-primary { background-color: var(--gold-solid); color: #000; }
+        .btn-primary:hover { background-color: #e0b665; box-shadow: 0 0 15px rgba(197, 160, 89, 0.3); }
+        .btn-outline { background-color: transparent; color: var(--gold-solid); }
+        .btn-outline:hover { background-color: rgba(197, 160, 89, 0.1); }
+
+        /* --- UTILS --- */
+        img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .text-dim { color: var(--text-dim); }
+        ul.check-list { list-style: none; padding: 0; text-align: left; display: inline-block; }
+        ul.check-list li { margin-bottom: 0.8rem; color: var(--text-dim); }
+        ul.check-list li i { color: var(--gold-solid); margin-right: 10px; width: 20px; text-align: center; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- PRINT --- */
+        @media print {
+            .hero, .btn, footer, .no-print, video { display: none !important; }
+            body { background: white; font-size: 11pt; color: black; }
+            .container { margin: 0; padding: 0; width: 100%; max-width: 100%; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 2rem; page-break-inside: avoid; background: white; color: black; }
+            .card::before { display: none; }
+            h1, h2, h3, h4, .section-tag, .gold-text, .detail-title { color: black !important; }
+            .text-dim { color: #333 !important; }
+            .budget-card { background: white; border: 2px solid black; padding: 2rem; color: black; }
+            .price-tag { color: black !important; }
+            .print-header { display: block !important; margin-bottom: 2rem; border-bottom: 2px solid black; padding-bottom: 1rem; text-align: center; }
+            .detail-item { border-bottom: 1px solid #ccc; }
+        }
+        .print-header { display: none; }
+    </style>
+</head>
+
+<body>
+
+    <div class="print-header">
+        <h1>ESTUDIO CONSTRUCTOR</h1>
+        <p>Propuesta de Diseño y Ejecución | Cliente: Familia Loreti</p>
+    </div>
+
+    <header class="hero">
+        <video autoplay muted loop playsinline class="video-bg">
+            <source src="Propuesta Loreti/Proyecto loreti video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <p class="hero-subtitle">Comarcas de Luján • Barrio Santa Inés</p>
+            <h1>VIVIR EL LAGO,<br>VIVIR SEGURO.</h1>
+            <p style="font-size: 1.2rem; color: #ddd; margin-bottom: 2rem;">Propuesta exclusiva para Lote 78</p>
+            <div>
+                <button onclick="document.getElementById('concepto').scrollIntoView({behavior: 'smooth'})" class="btn btn-primary">Ver Propuesta</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section id="concepto" class="card">
+            <div class="grid-2">
+                <div>
+                    <span class="section-tag">EL SENTIDO DEL PROYECTO</span>
+                    <h2>Diálogo con el Entorno</h2>
+                    <p class="text-dim">La Sub-Parcela 78 tiene un protagonista indiscutible: <strong>el espejo de agua y la naturaleza circundante</strong>.pdf].</p>
+                    <p class="text-dim">La morfología en "L" nace de una intención clara: <strong>Cerrarse hacia la calle para otorgar privacidad y seguridad, y abrirse completamente hacia el jardín y el lago.</strong> Creamos un "abrazo" arquitectónico que protege la vida familiar en su interior.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <ul class="check-list">
+                            <li><i class="fas fa-water"></i> Visuales protagonistas al Lago</li>
+                            <li><i class="fas fa-compass"></i> Asoleamiento Norte Pleno</li>
+                            <li><i class="fas fa-shield-alt"></i> Fachada frontal discreta y segura</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <img src="Propuesta Loreti/Captura de pantalla 2025-11-27 100726.jpg" alt="Vista al Lago en Comarcas de Luján">
+                    <p style="text-align: center; font-size: 0.8rem; color: #666; margin-top: 0.5rem;">Implantación estratégica en el lote.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="grid-2">
+                <div>
+                    <img src="Propuesta Loreti/plano_proyecto.jpg" alt="Plano de Distribución">
+                     <p style="text-align: center; font-size: 0.8rem; color: #666; margin-top: 0.5rem;">Distribución funcional sujeta a personalización.</p>
+                </div>
+                <div>
+                    <span class="section-tag">RECORRIDO SENSORIAL</span>
+                    <h2>Distribución de Espacios</h2>
+                    <p class="text-dim" style="margin-bottom: 1.5rem;">Cada metro cuadrado ha sido pensado para el disfrute y la funcionalidad moderna.</p>
+                    
+                    <ul class="detail-list">
+                        <li class="detail-item">
+                            <span class="detail-title">Zona Privada (Ala Izquierda)</span>
+                            <p class="text-dim">Diseñada como un refugio silencioso. Cuenta con una <strong>Master Suite</strong> con vestidor pasante y baño en suite con visuales al verde. Se complementa con <strong>dos dormitorios junior</strong> amplios y un baño completo compartido.</p>
+                        </li>
+                        <li class="detail-item">
+                            <span class="detail-title">Home Office & Recepción</span>
+                            <p class="text-dim">Ubicado estratégicamente cerca del acceso principal, permitiendo recibir visitas laborales sin invadir la intimidad del hogar. Ideal para teletrabajo con vista al frente.</p>
+                        </li>
+                        <li class="detail-item">
+                            <span class="detail-title">Gran Área Social (Ala Central)</span>
+                            <p class="text-dim">Un concepto "Open Space" que integra cocina con isla, comedor y estar. La carpintería de piso a techo borra el límite entre el interior y la galería, duplicando el espacio de uso.</p>
+                        </li>
+                        <li class="detail-item">
+                            <span class="detail-title">Vida Exterior</span>
+                            <p class="text-dim">Galería profunda con parrilla, conectada a una <strong>Piscina en L con solárium húmedo</strong> y el exclusivo <strong>Fogonero (Sunken Firepit)</strong>, creando distintos escenarios de reunión al aire libre.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <span class="section-tag">DIFERENCIALES TÉCNICOS</span>
+                <h2>Más que una Casa, un Refugio Inteligente</h2>
+                <p class="text-dim">Incorporamos tecnología de vanguardia para su tranquilidad y confort futuro.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="feature-item" style="border-color: rgba(197, 160, 89, 0.2);">
+                    <i class="fas fa-user-shield feature-icon"></i>
+                    <h3 class="feature-title">Security Design</h3>
+                    <p class="feature-desc">Diseño arquitectónico preventivo. Incluye <strong>Zonificación</strong> para aislar el sector de dormitorios y previsión para <strong>Safe Rooms</strong> (habitaciones blindables en caso de emergencia).</p>
+                </div>
+                
+                <div class="feature-item">
+                    <i class="fas fa-charging-station feature-icon"></i>
+                    <h3 class="feature-title">E-Mobility Ready</h3>
+                    <p class="feature-desc">Su cochera se entrega con la pre-instalación técnica para <strong>cargadores de vehículos eléctricos</strong>. Una casa preparada para el parque automotor del futuro.</p>
+                </div>
+
+                <div class="feature-item">
+                    <i class="fas fa-leaf feature-icon"></i>
+                    <h3 class="feature-title">Eco-Luxury</h3>
+                    <p class="feature-desc">Eficiencia energética mediante <strong>Aislación Térmica (DVH)</strong> y preparación para paneles solares. Reduzca el consumo sin sacrificar confort.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="presupuesto" class="card budget-card">
+            <span class="section-tag" style="color: #fff;">SISTEMA LLAVE EN MANO</span>
+            <h2 style="color: #fff;">Inversión Estimada</h2>
+            <p style="color: #ccc;">Valor total por la ejecución integral de la obra (Materiales + Mano de Obra + Dirección).</p>
+            
+            <div class="price-tag">USD [INSERTAR VALOR]</div>
+            
+            <div style="margin-top: 2rem;">
+                <a href="https://wa.me/5491140753480" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Agendar Reunión</a>
+                <button onclick="window.print()" class="btn btn-outline" style="margin-left: 10px;">Descargar PDF</button>
+            </div>
+            <p style="font-size: 0.8rem; color: #666; margin-top: 2rem;">* Presupuesto válido por 15 días.</p>
+        </section>
+
+    </main>
+
+    <footer class="no-print" style="text-align: center; padding: 2rem; border-top: 1px solid #333;">
+        <p class="text-dim">&copy; 2025 Estudio Constructor. Arquitectura de Lujo en Zona Oeste y Norte.</p>
+    </footer>
+
+</body>
+</html>

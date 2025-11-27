@@ -1,0 +1,212 @@
+/* Proposal Styles - Estudio Constructor */
+
+:root {
+    --primary-color: #fbbf24;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --bg-light: #f8fafc;
+    --white: #ffffff;
+    --font-heading: 'Outfit', sans-serif;
+    /* Assuming this is the project font */
+    --font-body: 'Inter', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.proposal-header {
+    background-color: #0f172a;
+    color: var(--white);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.proposal-logo {
+    max-width: 200px;
+    margin-bottom: 1rem;
+}
+
+.client-name {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.project-location {
+    font-size: 1.2rem;
+    color: #cbd5e1;
+    margin-top: 0.5rem;
+}
+
+.proposal-container {
+    max-width: 210mm;
+    /* A4 width approx */
+    margin: 2rem auto;
+    background: var(--white);
+    padding: 3rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-bottom: 3rem;
+    page-break-inside: avoid;
+}
+
+h2 {
+    font-family: var(--font-heading);
+    color: #0f172a;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.gallery-item img,
+.gallery-item video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.full-width-media {
+    width: 100%;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.full-width-media img {
+    width: 100%;
+    display: block;
+}
+
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.specs-table th,
+.specs-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+.specs-table th {
+    background-color: #f1f5f9;
+    font-weight: 600;
+    color: #334155;
+}
+
+.budget-section {
+    background-color: #f8fafc;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.action-buttons {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: #0f172a;
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background 0.3s;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #1e293b;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #0f172a;
+}
+
+.btn-primary:hover {
+    background-color: #f59e0b;
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background-color: white;
+    }
+
+    .proposal-container {
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-width: none;
+    }
+
+    .action-buttons,
+    .no-print {
+        display: none !important;
+    }
+
+    .proposal-header {
+        background-color: white;
+        color: black;
+        padding: 1rem 0;
+        border-bottom: 2px solid black;
+    }
+
+    .client-name {
+        color: black;
+    }
+
+    .project-location {
+        color: #333;
+    }
+
+    h2 {
+        border-bottom-color: black;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .proposal-container {
+        padding: 1.5rem;
+        margin: 0;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Residencial Loreti | Estudio Constructor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ESTILOS GENERALES (DISEÑO VISUAL) --- */
+        :root {
+            --primary: #1e293b; /* Gris oscuro sofisticado */
+            --accent: #d97706; /* Dorado/Ocre para llamadas de atención */
+            --bg-light: #f8fafc;
+            --text-main: #334155;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--primary);
+        }
+
+        /* --- HERO SECTION CON VIDEO DE FONDO --- */
+        .hero {
+            position: relative;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.6); /* Oscurece el video para que se lea el texto */
+        }
+
+        .hero-content {
+            z-index: 1;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .btn-cta {
+            background-color: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.2s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            background-color: #b45309;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* --- SECCIONES TIPO TARJETA --- */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 10px auto 0;
+        }
+
+        /* --- GRID DE IMAGENES Y TEXTO --- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .text-block {
+            padding: 2rem;
+        }
+
+        .img-block img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* --- TABLA DE ESPECIFICACIONES --- */
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .specs-table th, .specs-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: left;
+        }
+
+        .specs-table th {
+            color: var(--primary);
+            font-weight: 600;
+            width: 40%;
+        }
+
+        /* --- PRESUPUESTO --- */
+        .budget-box {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .budget-price {
+            font-size: 3rem;
+            font-family: 'Outfit', sans-serif;
+            color: var(--accent);
+            margin: 1rem 0;
+            font-weight: 700;
+        }
+
+        .disclaimer {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 1rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* --- OPTIMIZACIÓN PARA IMPRESIÓN (PDF) --- */
+        @media print {
+            .hero, .btn-cta, footer, .video-container, .no-print {
+                display: none !important;
+            }
+            
+            body {
+                background: white;
+                color: black;
+                font-size: 11pt;
+            }
+
+            .container {
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .card {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+
+            h1, h2 {
+                color: black;
+            }
+
+            /* Mostrar encabezado especial solo para impresión */
+            .print-header {
+                display: block !important;
+                text-align: center;
+                margin-bottom: 2rem;
+                padding-bottom: 1rem;
+                border-bottom: 2px solid #000;
+            }
+            
+            .budget-box {
+                background: white;
+                color: black;
+                border: 2px solid #000;
+            }
+            
+            .budget-price {
+                color: black;
+            }
+        }
+        
+        .print-header { display: none; }
+        
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="print-header">
+        <h1>ESTUDIO CONSTRUCTOR</h1>
+        <p>Propuesta Técnica y Económica | Proyecto Loreti</p>
+    </div>
+
+    <header class="hero">
+        <video autoplay muted loop playsinline class="video-bg">
+            <source src="Propuesta Loreti/Proyecto loreti video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <p>BARRIO SANTA INÉS | COMARCAS DE LUJÁN</p>
+            <h1>Residencia Loreti</h1>
+            <p>Diseño exclusivo en Lote 78 | 2.004 m² de Naturaleza</p>
+            <button onclick="document.getElementById('overview').scrollIntoView({behavior: 'smooth'})" class="btn-cta">Ver Propuesta</button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section id="overview" class="card">
+            <div class="grid-2">
+                <div class="text-block">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 1rem;">Implantación Estratégica</h2>
+                    <p>Ubicada en la <strong>Sub-Parcela 78 del Barrio Santa Inés</strong>, esta residencia ha sido proyectada para dialogar con el entorno.</p>
+                    <p>Aprovechando los <strong>38 metros de frente</strong> y la generosa superficie total de <strong>2004.43 m²</strong>, la arquitectura en "L" protege la privacidad de la vida familiar mientras abre las vistas principales hacia el jardín y el espejo de agua.</p>
+                </div>
+                <div class="img-block">
+                    <img src="Propuesta Loreti/Captura de pantalla 2025-11-27 100726.jpg" alt="Vista Satelital Lote">
+                </div>
+            </div>
+        </section>
+
+        <section id="project">
+            <h2 class="section-title">Distribución y Funcionalidad</h2>
+            <div class="card" style="padding: 1rem;">
+                <img src="Propuesta Loreti/plano_proyecto.jpg" alt="Plano de Planta" style="width: 100%; height: auto; border-radius: 8px;">
+            </div>
+            <div class="grid-2" style="margin-top: 2rem;">
+                <div class="card text-block">
+                    <h3>Zona Social & Exterior</h3>
+                    <ul style="padding-left: 1.2rem;">
+                        <li><strong>Concepto Abierto:</strong> Integración fluida de cocina, comedor y estar.</li>
+                        <li><strong>Galería Premium:</strong> Espacio semicubierto con parrilla y conexión directa al jardín.</li>
+                        <li><strong>Piscina en "L":</strong> Diseño moderno con solárium húmedo.</li>
+                        <li><strong>Fogonero Sunken:</strong> Espacio de reunión hundido al aire libre (detalle exclusivo).</li>
+                    </ul>
+                </div>
+                <div class="card text-block">
+                    <h3>Zona Privada & Servicios</h3>
+                    <ul style="padding-left: 1.2rem;">
+                        <li><strong>Master Suite:</strong> Con vestidor privado y baño exclusivo.</li>
+                        <li><strong>2 Dormitorios Junior:</strong> Amplios y luminosos.</li>
+                        <li><strong>Home Office:</strong> Escritorio al frente ideal para trabajo remoto.</li>
+                        <li><strong>Cochera:</strong> Espacio cubierto/pérgola para dos vehículos.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="budget">
+            <h2 class="section-title">Propuesta de Inversión</h2>
+            
+            <div class="card" style="padding: 2rem;">
+                <table class="specs-table">
+                    <tr>
+                        <th>Proyecto y Dirección</th>
+                        <td>Incluido (Honorarios Profesionales)</td>
+                    </tr>
+                    <tr>
+                        <th>Materiales Gruesos y Estructurales</th>
+                        <td>Incluido (Hormigón, mampostería, hierros)</td>
+                    </tr>
+                    <tr>
+                        <th>Mano de Obra Especializada</th>
+                        <td>Incluido (Albañilería, instalaciones, terminaciones)</td>
+                    </tr>
+                    <tr>
+                        <th>Plazo de Ejecución</th>
+                        <td>10 a 12 Meses Estimados</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="budget-box">
+                <h3>VALOR TOTAL LLAVE EN MANO</h3>
+                <div class="budget-price">USD [INSERTAR MONTO]</div>
+                <p>Forma de pago: Anticipo 30% + Cuotas según avance de obra.</p>
+                <p class="disclaimer">* Presupuesto válido por 15 días hábiles. No incluye derechos municipales ni paisajismo.</p>
+            </div>
+        </section>
+
+        <div style="text-align: center; margin-top: 3rem;" class="no-print">
+            <button onclick="window.print()" class="btn-cta" style="background-color: var(--primary);">🖨️ Descargar Carpeta PDF</button>
+            <p style="margin-top: 1rem; color: #64748b; font-size: 0.9rem;">Al descargar, se generará una versión optimizada para imprimir sin videos.</p>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Estudio Constructor | www.estudioconstructor.com.ar</p>
+    </footer>
+
+</body>
+</html>
